@@ -1,0 +1,115 @@
+สรุปสคริปต์และหน้าที่
+
+1. GridMovementSystem.cs
+
+ใช้กับ ผู้เล่นหลัก
+
+ฟังก์ชันหลัก: 
+
+เดินตาม Grid
+
+Pathfinding (A*) ไปยังตำแหน่งที่คลิก
+
+การโจมตีมอนสเตอร์
+
+การเล่น Animation และเสียงโจมตี
+
+เชื่อมกับ: 
+
+PlayerWeaponManager.cs → สำหรับอาวุธ
+
+Attacker.cs → สำหรับการโจมตี/คำนวณความเสียหาย
+
+CharacterStats.cs → สำหรับตรวจสอบ HP, Defense, etc.
+
+AStarUtil.cs → สำหรับหา path
+
+2. MonsterAI_GridOnly.cs
+
+ใช้กับ มอนสเตอร์
+
+ฟังก์ชันหลัก: 
+
+ระบบ AI 3 โหมด: Patrol, Chase, Attack
+
+เดินตาม Grid
+
+Pathfinding (A*) ไปยังเป้าหมาย
+
+การโจมตีผู้เล่น
+
+Animation และเสียงตอนโจมตี/โดนโจมตี
+
+เชื่อมกับ: 
+
+CharacterStats.cs → ตรวจสอบ HP ของผู้เล่น
+
+Attacker.cs → ระบบโจมตี
+
+AStarUtil.cs → Pathfinding
+
+3. CharacterStats.cs
+
+เก็บข้อมูลพื้นฐานของตัวละครและมอนสเตอร์ 
+
+HP, MaxHP
+
+Attack, Defense
+
+อื่น ๆ (ธาตุ, speed, range)
+
+ใช้ในการคำนวณความเสียหายและตรวจสอบสถานะชีวิต
+
+เชื่อมกับ: ทุกสคริปต์ที่ทำ combat
+
+4. AStarUtil.cs
+
+ระบบ Pathfinding A*
+
+ใช้ทั้งผู้เล่นและมอนสเตอร์
+
+รับตำแหน่งเริ่มต้นและเป้าหมาย → คืนค่าลำดับตำแหน่งสำหรับเดิน
+
+5. CombatManager.cs
+
+ระบบจัดการการต่อสู้กลาง (optional)
+
+สามารถเก็บ event, log, หรือ trigger การโจมตีแบบรวม
+
+6. ElementType.cs
+
+กำหนดชนิดธาตุ เช่น Fire, Ice, Light, Soul
+
+ใช้กับ การโจมตี, Animation, และเสียง
+
+7. WeaponItem.cs
+
+เก็บข้อมูลอาวุธ เช่น damage, range, type
+
+ใช้กับ Player และมอนสเตอร์ที่มีอาวุธ
+
+8. Attacker.cs
+
+ฟังก์ชัน โจมตีตัวละครหรือมอนสเตอร์
+
+คำนวณความเสียหาย (Damage)
+
+ใช้ธาตุจาก ElementType และข้อมูลจาก CharacterStats
+
+9. ElementalReactionData.cs
+
+Animation + Sound ขณะตัวละครโดนโจมตีธาตุ
+
+ใช้กับผู้เล่นและมอนสเตอร์
+
+ฟีเจอร์: 
+
+เลือก Animation แบบสุ่ม
+
+เล่นเสียง Hit
+
+10. PlayerWeaponManager.cs
+
+จัดการอาวุธผู้เล่น
+
+สลับอาวุธ, ตรวจสอบว่าอาวุธพร้อมใช้งานหรือไม่
